@@ -151,6 +151,8 @@ class Process implements Runnable {
 }
 
 public class SchedulerSimulation {
+    // Feature 2: Added context switch counter
+    public static int contextSwitches = 0;
     public static void main(String[] args) {
         // ⚠️ IMPORTANT: Put your student ID here to seed the random number generator
         // This makes your output unique to you - DO NOT forget to change this!
@@ -229,6 +231,8 @@ public class SchedulerSimulation {
             
             // Print the current process queue (list of process IDs in the queue)
             System.out.println(Colors.BOLD + Colors.MAGENTA + "┌─ Ready Queue " + "─".repeat(65) + Colors.RESET);
+            // Feature 2: Increment context switch counter before a process starts running
+            contextSwitches++;
             System.out.print(Colors.MAGENTA + "│ " + Colors.RESET + Colors.BRIGHT_WHITE + "[" + Colors.RESET);
             int queueCount = 0;
             for (Thread thread : processQueue) {
@@ -283,6 +287,9 @@ public class SchedulerSimulation {
         System.out.println(Colors.BOLD + Colors.BRIGHT_GREEN + 
                           "╚════════════════════════════════════════════════════════════════════════════════╝" + 
                           Colors.RESET + "\n");
+                          // Feature 2: Display total context switches
+            System.out.println(Colors.BOLD + Colors.YELLOW + "  Total context switches: " + 
+                              Colors.BRIGHT_WHITE + contextSwitches + Colors.RESET + "\n");
     }
     
     // Method to add a process to the queue and map, while printing a "ready" message
