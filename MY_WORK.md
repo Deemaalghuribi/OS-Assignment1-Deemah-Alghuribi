@@ -29,11 +29,11 @@
 
 | Field | Your Answer |
 |-------|-------------|
-| **Full Name** | [Write your full name here] |
-| **Student ID** | [Write your student ID here] |
-| **University Email** | [yourid]@std.psau.edu.sa |
-| **GitHub Username** | [your-github-username] |
-| **Repository Link** | [Paste your repository link here] |
+| **Full Name** | [Deemah alghuribi] |
+| **Student ID** | [446051656] |
+| **University Email** | [446051656@std.psau.edu.sa] |
+| **GitHub Username** | [Deemaalghuribi] |
+| **Repository Link** | [(https://github.com/Deemaalghuribi/OS-Assignment1-Deemah-Alghuribi)] |
  
 ---
 
@@ -129,95 +129,100 @@
 
 ## Your Development Log
 
-### Entry 1 - [Date and Time]
-**What I did**:
+### Entry 1 - [October 5, 2026, 4:15 PM]
+**What I did**: Forked the repository, set up my environment, and added my student ID.
 
 **Details**:
+- Forked the starter repo to my GitHub account and kept it public.
+- Cloned it locally using VS Code.
+- Changed the student ID to 446051656 to seed the random generation.
+- Ran the initial simulation to observe the default behavior.
 
-**Challenges**:
+**Challenges**: The terminal was throwing git configuration errors when trying to commit.
 
-**Solution**:
+**Solution**: I used the terminal to manually set `git config --global user.name` and `user.email`.
 
-**Time spent**:
+**Time spent**: 45 minutes
 
 ---
 
-### Entry 2 - [Date and Time]
-**What I did**:
+### Entry 2 - [October 7, 2026, 6:30 PM]
+**What I did**: Implemented Feature 1 (Process Priority).
 
 **Details**:
+- Added a `priority` integer variable to the `Process` class.
+- Initialized it in the constructor using `Math.random()` to generate a value between 1 and 10.
+- Created a getter method `getPriority()`.
+- Updated the `addProcessToQueue()` print statement to display the priority.
 
-**Challenges**:
+**Challenges**: The output wasn't updating when I ran `java SchedulerSimulation`.
 
-**Solution**:
+**Solution**: Realized the file wasn't saved properly. Started using `File > Save` manually and clearing the terminal before recompiling.
 
-**Time spent**:
+**Time spent**: 1 hour
 
 ---
 
-### Entry 3 - [Date and Time]
-**What I did**:
+### Entry 3 - [October 8, 2026, 5:00 PM]
+**What I did**: Implemented Feature 2 (Context Switch Counter).
 
 **Details**:
+- Declared a `public static int contextSwitches = 0;` variable above the `main` method.
+- Found the exact location where a process starts execution in the queue loop.
+- Incremented the counter right before `currentThread.start()`.
+- Printed the total context switches at the end of the simulation.
 
-**Challenges**:
+**Challenges**: Deciding exactly where to increment the counter to accurately reflect context switches.
 
-**Solution**:
+**Solution**: Read the `while` loop logic carefully and placed the increment before the thread starts its quantum.
 
-**Time spent**:
+**Time spent**: 45 minutes
 
 ---
 
-### Entry 4 - [Date and Time]
-**What I did**:
+### Entry 4 - [October 9, 2026, 8:00 PM]
+**What I did**: Implemented Feature 3 (Waiting Time Tracking).
 
 **Details**:
+- Added `arrivalTime` and `waitingTime` variables to the `Process` class.
+- Recorded `System.currentTimeMillis()` in the constructor.
+- Calculated waiting time as `(System.currentTimeMillis() - arrivalTime) - burstTime`.
+- Updated print statements in both `run()` and `runToCompletion()` methods.
 
-**Challenges**:
+**Challenges**: Ensuring the waiting time calculation was mathematically correct and didn't output negative numbers.
 
-**Solution**:
+**Solution**: Used `Math.max(0, ...)` to prevent any negative values due to minor thread execution delays.
 
-**Time spent**:
+**Time spent**: 1 hour
 
 ---
 
-### Entry 5 - [Date and Time]
-**What I did**:
+### Entry 5 - [October 10, 2026, 2:00 PM]
+**What I did**: Finalized documentation and verified all features.
 
 **Details**:
+- Ran the full program to ensure all features work together flawlessly.
+- Filled out the `MY_WORK.md` development log.
+- Answered the reflection and technical questions based on my code execution.
+- Prepared for recording the video demonstration.
 
-**Challenges**:
+**Challenges**: Formulating concise and accurate technical answers.
 
-**Solution**:
+**Solution**: Re-read the specific functions in the code and matched them with the theoretical concepts learned in class.
 
-**Time spent**:
-
----
-
-### Entry 6 - [Optional - Date and Time]
-**What I did**:
-
-**Details**:
-
-**Challenges**:
-
-**Solution**:
-
-**Time spent**:
+**Time spent**: 1.5 hours
 
 ---
 
 ## Development Log Summary
 
-> 💡 **TIP:** Fill this in **last**, after all entries are written.
+**Total time spent on assignment**: 5 hours
 
-**Total time spent on assignment**: [X hours]
+**Most challenging part**: Debugging the terminal outputs and managing git configurations directly from VS Code.
 
-**Most challenging part**:
+**Most interesting learning**: Seeing how `Thread.sleep()` and `Thread.join()` actually pause and manage execution time visually in the terminal.
 
-**Most interesting learning**:
-
-**What I would do differently next time**:
+**What I would do differently next time**: I would configure Auto-Save in my IDE from the very beginning to avoid compiling old code.
 
 ---
 
@@ -237,7 +242,7 @@
 
 **Your Answer:** *(5-7 sentences)*
 
-[Write your answer here.]
+[I learned how Java implements multithreading using the `Runnable` interface and the `Thread` class. It was fascinating to see how `Thread.start()` actually begins the execution of the `run()` method concurrently. I also learned how `Thread.sleep()` is used to simulate processing time by temporarily pausing a thread's execution. Furthermore, the use of `Thread.join()` showed me how the main program scheduler waits for a specific thread to finish its time quantum before moving to the next one. Overall, it clarified how multiple tasks share CPU time efficiently without blocking the entire system.]
 
 ## Question 2: What was the most challenging part of this assignment?
 
@@ -245,7 +250,7 @@
 
 **Your Answer:** *(5-7 sentences)*
 
-[Write your answer here.]
+[The most challenging part of this assignment was configuring the GitHub integration and ensuring my commits were tracked correctly. Initially, I faced errors when trying to commit my changes directly from the Source Control panel because my Git `user.name` and `user.email` were not globally set up on my machine. It was also slightly tricky to figure out exactly where to place the new variables inside the existing `SchedulerSimulation.java` structure, especially ensuring the `contextSwitches` counter was incremented at the precise moment.]
 
 ## Question 3: How did you overcome the challenges you faced?
 
@@ -253,7 +258,7 @@
 
 **Your Answer:** *(5-7 sentences)*
 
-[Write your answer here.]
+[I overcame these challenges by taking a step-by-step approach instead of rushing. Whenever I hit a Git error, I used the terminal to manually input the correct `git config` commands with my university email. To fix code and compilation issues, I learned to save my files manually from the top menu and use the `clear` command in the terminal before running `javac` and `java` again. This prevented me from confusing outdated output with new changes.]
 
 ## Question 4: How can you apply multithreading concepts in real-world applications?
 
@@ -261,7 +266,7 @@
 
 **Your Answer:** *(5-7 sentences)*
 
-[Write your answer here.]
+[Multithreading concepts are essential in almost every modern application to maintain responsiveness. For example, when I am listening to a playlist on Spotify, one thread handles streaming the audio seamlessly, while another updates the UI and responds to my clicks. Without multithreading, the app would freeze every time it downloaded the next chunk of the song. Similarly, background tasks like downloading files or sending push notifications rely heavily on threads to keep the main application running smoothly for the user.]
 
 ### Optional: What would you like to learn more about?
 
@@ -293,7 +298,7 @@
 
 **Your Answer:** *(3-5 sentences)*
 
-[Write your answer here.]
+[A process is an independent program in execution with its own dedicated memory space, while a thread is a lightweight unit of execution within a process that shares the same memory. We used threads in `SchedulerSimulation.java` (specifically via `Thread thread = new Thread(process);`) because creating actual OS processes is highly resource-intensive and has a massive creation overhead. Threads allow us to simulate concurrent execution much faster, with minimal memory overhead, and they communicate with each other seamlessly within the same Java Virtual Machine.]
 
 ## Question 2: Ready Queue Behavior
 
@@ -305,15 +310,18 @@
 
 **Your Answer:** *(3-5 sentences)*
 
-[Write your answer here.]
+[In Round-Robin scheduling, if a process doesn't finish its burst time within the allocated time quantum, it is preempted, removed from the CPU, and placed back at the end of the ready queue. Re-queueing ensures absolute fairness so that no single long process monopolizes the CPU, allowing shorter processes a chance to run. In my output, a process with a large burst time had to be re-queued multiple times before its remaining time finally reached zero.]
 
 Example from my output:
-```
-[Paste a relevant snippet from your program output here showing a process being re-queued]
+```[⏸ P10 completed quantum 5000ms │ Overall progress: [███████████████████░] 99%
+     Remaining time: 81ms
+  ↻ P10 yields CPU for context switch
+
+  ➕ P10 (Priority: 2) added to ready queue │ Burst time: 10081ms]
 ```
 
 **Explanation of example:**
-[Explain what is happening in the output snippet you pasted.]
+[In this snippet, process P10 executed for its full time quantum of 5000ms, but it still had 81ms of execution time left. Because of the Round-Robin policy, it yielded the CPU (triggering a context switch) and was placed back into the ready queue to wait for another turn to finish its remaining 81ms.]
 
 ## Question 3: Thread Lifecycle
 
@@ -323,15 +331,11 @@ Example from my output:
 
 **Your Answer:** *(3-5 sentences overall; one short explanation per state)*
 
-1. **New**: [When is P1 in the New state?]
-
-2. **Runnable**: [When does P1 become Runnable?]
-
-3. **Running**: [When is P1 Running?]
-
-4. **Waiting**: [When and why would a thread be Waiting?]
-
-5. **Terminated**: [When is P1 Terminated?]
+1. **New**: P1 is in the New state when we create its thread object via `new Thread(process)` inside the `addProcessToQueue()` method.
+2. **Runnable**: P1 becomes Runnable when it is added to the `processQueue`, waiting for the CPU to become available.
+3. **Running**: P1 enters the Running state when the scheduler loop pulls it from the queue and calls `currentThread.start()`.
+4. **Waiting**: P1 goes into a timed waiting state when `Thread.sleep()` is called inside `run()` to simulate work. The main thread also waits when calling `currentThread.join()`.
+5. **Terminated**: P1 is Terminated when its `remainingTime` reaches 0 and the `run()` or `runToCompletion()` method completely finishes execution.
 
 ## Question 4: Real-World Applications
 
@@ -341,21 +345,13 @@ Example from my output:
 
 **Your Answer:** *(3-5 sentences per example)*
 
-### Example 1 (operating-system level): [Name of scenario]
+### Example 1 (operating-system level): Modern OS CPU Scheduler
+**Description**: The operating system scheduler manages multiple background services, system processes, and user applications running simultaneously on a single CPU core.
+**Why Round-Robin works well here**: It provides high responsiveness and fairness, ensuring that no single heavy application freezes the entire system, giving the user the illusion that everything is running at the exact same time smoothly.
 
-**Description**:
-[Describe the real-world scenario.]
-
-**Why Round-Robin works well here**:
-[Fairness, responsiveness, predictability?]
-
-### Example 2: [Name of application/scenario]
-
-**Description**:
-[Describe the real-world scenario or application.]
-
-**Why Round-Robin works well here**:
-[Fairness, responsiveness, predictability?]
+### Example 2: Event Hospitality POS System (Rafad)
+**Description**: A digital ordering system for an event hospitality service like Rafad, where multiple customers are placing orders simultaneously at different stations (V60 coffee, matcha, crepe, etc.).
+**Why Round-Robin works well here**: It ensures fairness and predictable wait times. Every customer's order gets processed sequentially in small increments without one massive bulk order completely blocking the entire queue and halting the service flow.
 
 ## Summary
 
