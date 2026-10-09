@@ -31,6 +31,9 @@ class Process implements Runnable {
     private int remainingTime; // Time left for the process to finish its execution
     // Feature 1: Added priority field (1-10)
     private int priority;
+    // Feature 3: Variables to track waiting time
+    private long arrivalTime;
+    private long waitingTime;
 
     // Constructor to initialize the process with name, burst time, and time quantum
     public Process(String name, int burstTime, int timeQuantum) {
@@ -39,6 +42,8 @@ class Process implements Runnable {
         this.timeQuantum = timeQuantum;
         this.remainingTime = burstTime; // Initially, remaining time is equal to the burst time
         this.priority = (int)(Math.random() * 10) + 1;
+        this.arrivalTime = System.currentTimeMillis();
+        this.waitingTime = 0;
     }
 
     // This method will be called when the thread for this process is started
@@ -86,11 +91,12 @@ class Process implements Runnable {
         if (remainingTime > 0) {
             System.out.println(Colors.BLUE + "  ↻ " + Colors.CYAN + name + Colors.RESET + 
                               " yields CPU for context switch" + Colors.RESET);
-        } else {
-            // If no time is left, the process has finished its execution
+       } else {
+            // Feature 3: Calculate and display waiting time when process finishes
+            this.waitingTime = Math.max(0, (System.currentTimeMillis() - arrivalTime) - burstTime);
             System.out.println(Colors.BRIGHT_GREEN + "  ✓ " + Colors.BOLD + Colors.CYAN + name + 
                               Colors.RESET + Colors.BRIGHT_GREEN + " finished execution!" + 
-                              Colors.RESET);
+                              Colors.RESET + " │ Waiting time: " + Colors.YELLOW + waitingTime + "ms" + Colors.RESET);
         }
         System.out.println();
     }
@@ -119,8 +125,11 @@ class Process implements Runnable {
                               Colors.RESET + " [" + remainingTime + "ms]");
             Thread.sleep(remainingTime); // Run until completion
             remainingTime = 0; // Mark the process as completed
+            // Feature 3: Calculate and display waiting time for completion
+            this.waitingTime = Math.max(0, (System.currentTimeMillis() - arrivalTime) - burstTime);
             System.out.println(Colors.BRIGHT_GREEN + "  ✓ " + Colors.BOLD + Colors.CYAN + name + 
-                              Colors.RESET + Colors.BRIGHT_GREEN + " finished execution!" + Colors.RESET);
+                              Colors.RESET + Colors.BRIGHT_GREEN + " finished execution!" + Colors.RESET + 
+                              " │ Waiting time: " + Colors.YELLOW + waitingTime + "ms" + Colors.RESET);
             System.out.println();
         } catch (InterruptedException e) {
             System.out.println(Colors.RED + "  ✗ " + name + " was interrupted." + Colors.RESET);
